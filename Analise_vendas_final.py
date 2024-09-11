@@ -141,3 +141,19 @@ Regiões = {'Norte': Região_Norte, 'Sul':Região_Sul, 'Leste':Região_Leste, 'O
 Região_menor_venda = min(Regiões, key=Regiões.get)
 print(f'A região com menor venda é {Região_menor_venda}')
 
+# Lucro por canal de venda
+Online_A = sum(df[(df['Canal de Vendas'] == "Online") & (df['Produto'] == "Produto A")] ['Quantidade Vendida'])
+Online_B = sum(df[(df['Canal de Vendas'] == "Online") & (df['Produto'] == "Produto B")] ['Quantidade Vendida'])
+Online_C= sum(df[(df['Canal de Vendas'] == "Online") & (df['Produto'] == "Produto C")] ['Quantidade Vendida'])
+
+Fisica_A = sum(df[(df['Canal de Vendas'] == "Loja Física") & (df['Produto'] == "Produto A")] ['Quantidade Vendida'])
+Fisica_B = sum(df[(df['Canal de Vendas'] == "Loja Física") & (df['Produto'] == "Produto B")] ['Quantidade Vendida'])
+Fisica_C = sum(df[(df['Canal de Vendas'] == "Loja Física") & (df['Produto'] == "Produto C")] ['Quantidade Vendida'])
+
+Lucro_Online = (Preço_A*Online_A) + (Preço_B*Online_B) + (Preço_C*Online_C)
+Lucro_Loja_Fisica = (Preço_A*Fisica_A) + (Preço_B*Fisica_B) + (Preço_C*Fisica_C)
+
+if Lucro_Online > Lucro_Loja_Fisica:
+    print('O canal de venda que mais trouxe benefício e lucro é o Online')
+else: 
+    print('O canal de venda que mais trouxe benefício é o da Loja Física')
